@@ -8,6 +8,10 @@ MVC (Model-View-Controller)
 | **Kelas**  | TI.23.A6            |
 | **MatKul**  | OOP               |
 | **Dosen**  | Agung Nugroho, S.Kom., M.Kom.            |
+# Link Youtube
+Video berisi penjelasan proses pembuatan program CRUD Mahasiswa<br>
+[klik link youtube disini](https://youtu.be/CliMuGoLiv0)<br>
+https://youtu.be/CliMuGoLiv0
 # Output
 ## Form mahasiswa
 ![doc](doc/m.png)
