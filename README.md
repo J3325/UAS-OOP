@@ -1,6 +1,7 @@
 # UAS-OOP
 CRUD MAHASISWA <br>
-MVC (Model-View-Controller)
+Program ini menggunakan arsitektur MVC (Model-View-Controller)<br>
+dan basis data MySQL.
 | Keterangan | Data                |
 | ---------- | ------------------- |
 | **Nama**   | Zaky Putra Pratama |
@@ -11,7 +12,17 @@ MVC (Model-View-Controller)
 # Link Youtube
 Video berisi penjelasan proses pembuatan program CRUD Mahasiswa<br>
 [klik link youtube disini](https://youtu.be/CliMuGoLiv0)<br>
-https://youtu.be/CliMuGoLiv0
+https://youtu.be/CliMuGoLiv0<br>
+
+# Alur Kerja Program:
+1. Program dimulai dari Main.java
+2. Membuat instance view dan controller
+3. Controller menginisialisasi model
+4. View menampilkan interface
+5. User berinteraksi dengan view
+6. Controller memproses input
+7. Model menangani operasi database
+8. View menampilkan hasil
 # Output
 ## Form mahasiswa
 ![doc](doc/m.png)
@@ -53,8 +64,22 @@ CREATE TABLE nilai (
   FOREIGN KEY (mahasiswa_id) REFERENCES mahasiswa (id)
 );
 ```
+# resources
+### Config.Properties
+config untuk menyambungkan databases yang telah dibuat di MySql.
+- config.properties: Konfigurasi database
+```config
+db.url=jdbc:mysql://localhost:3306/akademik
+db.user=root
+db.password=
+```
+Program ini terdiri dari beberapa package utama
 # Classes
 ### BaseModel
+- Kelas abstrak yang menjadi dasar untuk semua model
+- Menangani operasi CRUD dasar (find, save, insert, update, delete)
+- Menggunakan generic type untuk fleksibilitas
+- Memiliki method-method abstrak yang harus diimplementasi oleh kelas turunan
 ```java
 package classes;
 
@@ -130,6 +155,10 @@ public abstract class BaseModel<T> {
 }
 ```
 ### Databases
+- Menangani koneksi ke database MySQL
+- Membaca konfigurasi dari file properties
+- Menyediakan method-method untuk eksekusi query
+- Menggunakan PreparedStatement untuk keamanan
 ```java
 package classes;
 
@@ -250,6 +279,8 @@ public class Database {
 }
 ```
 ### RowMapper
+- Interface untuk mapping data dari ResultSet ke objek
+- Memudahkan konversi data dari database ke objek Java
 ```java
 package classes; 
  
@@ -262,6 +293,9 @@ public interface RowMapper<T> {
 ```
 ## Controller
 ### MahasiswaController
+- Menghubungkan FormMahasiswa dengan Model
+- Menangani event dari view
+- Mengatur alur data antara view dan model
 ```java
 package controller;
 
@@ -379,6 +413,9 @@ public class MahasiswaController {
 }
 ```
 ### NilaiController
+- Mengontrol operasi terkait nilai
+- Menangani tampilan dan aksi form nilai
+- Integrasi dengan data mahasiswa
 ```java
 package controller;
 
@@ -515,6 +552,9 @@ public class NilaiController {
 ```
 # Model
 ### Mahasiswa
+- POJO (Plain Old Java Object) untuk data mahasiswa
+- Memiliki atribut: id, nim, nama, jurusan, angkatan
+- Dilengkapi getter dan setter
 ```java
 package model; 
  
@@ -582,6 +622,9 @@ angkatan) {
 }
 ```
 ### MahasiswaModel
+- Extends BaseModel<Mahasiswa>
+- Implementasi konkrit untuk operasi database mahasiswa
+- Override method-method dari BaseModel
 ```java
 package model; 
  
@@ -624,6 +667,8 @@ mahasiswa.getJurusan(), mahasiswa.getAngkatan()};
 }
 ```
 ### Nilai
+- POJO untuk data nilai
+- Atribut: id, mahasiswaId, mataKuliah, semester, nilai
 ```java
 package model;
 
@@ -689,6 +734,8 @@ public class Nilai {
 }
 ```
 ### NilaiModel
+- Menangani operasi CRUD untuk nilai
+- Berelasi dengan data mahasiswa
 ```java
 package model;
 
@@ -771,6 +818,9 @@ public class NilaiModel {
 ```
 # View
 ### FormMahasiswa
+- JFrame untuk tampilan utama
+- Memiliki komponen: form input, tabel, dan tombol aksi
+- Menggunakan GridLayout dan BorderLayout
 ```java
 package view;
 
@@ -831,6 +881,9 @@ public class FormMahasiswa extends JFrame {
 }
 ```
 ### FormInputNilai
+- JFrame untuk input/edit nilai
+- Form untuk memasukkan data nilai
+- Validasi input
 ```java
 package view;
 
@@ -1007,12 +1060,4 @@ public class Main {
     }
 }
 ```
-# Config.Properties
-```config
-db.url=jdbc:mysql://localhost:3306/akademik
-db.user=root
-db.password=
-```
-config untuk menyambungkan databases yang telah dibuat di MySql.
-
 selesai
