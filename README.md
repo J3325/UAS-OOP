@@ -7,12 +7,12 @@ dan basis data MySQL.
 | **Nama**   | Zaky Putra Pratama |
 | **NIM**    | 312310613           |
 | **Kelas**  | TI.23.A6            |
-| **MatKul**  | OOP               |
+| **MatKul**  | Pemograman orientasi objek               |
 | **Dosen**  | Agung Nugroho, S.Kom., M.Kom.            |
 # Link Youtube
 Video berisi penjelasan proses pembuatan program CRUD Mahasiswa<br>
-[klik link youtube disini](https://youtu.be/CliMuGoLiv0)<br>
-https://youtu.be/CliMuGoLiv0<br>
+[klik link youtube disini](https://youtu.be/by81QzcQYMI)<br>
+https://youtu.be/by81QzcQYMI<br>
 
 # Alur Kerja Program:
 1. Program dimulai dari Main.java
